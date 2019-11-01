@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+@using TestMixArch.Account
+
+@Page
+@Model LoginModel
+@{ var logModel = new LoginModel();}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+    <p>@logModel.ModelState</p>
+        <div>
+            <input />
+            <input />
+            <@Html.TextBox("txtLogin", logModel.Test())>
+            <button type="submit">Login</button>
+        </div>
+    </div>
+</body>
+</html>

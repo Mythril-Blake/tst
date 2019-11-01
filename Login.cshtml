@@ -1,0 +1,195 @@
+﻿@using System;
+@using TestMixArch.Account;
+@Page
+@Model LoginModel
+@{  var loginModel = new LoginModel();}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Sign In</title>
+    <meta name="description" content="***">
+    <link rel='shortcut icon' type='image/x-icon' href='../img/favicon_package/favicon.ico' />
+    <link rel="stylesheet" href="https://use.typekit.net/rvt1xma.css">
+
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/global.js"></script>
+
+    <script>try { Typekit.load({ async: true }); } catch (e) { }</script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <div class="bg"></div>
+    </div>
+    <!-- Content Body -->
+    <div class="content-body sign-view">
+
+        <div class="grid-container">
+            <!--  Col 1  -->
+            <div class="grid-half">
+                <div class="sign-cta">
+                    <div class="sign-cta-logo"></div>
+                    <p class="sign-cta-content">You have been<br> invited to participate<br> in a <span>smarter way to work.</span></p>
+                    <a href="#" class="sign-cta-vid"><span>See how it works.</span></a>
+                </div>
+            </div>
+            <!-- Col 2 -->
+            <div class="grid-half form-side">
+                <div class="sign-form-logo"></div>
+                <h1>Sign In</h1>
+                <form>
+                    <label for="email">Email</label>
+                    <@Html.TextBox("txtEmail")>
+                    <input type="text" name="email" hidden="hidden">
+                    <label for="password">Password</label>
+                        <@Html.TextBox("txtPassword")>
+                    <input type="password" name="password" hidden="hidden">
+                    @*<button type="submit">Sign In</button>*@
+                     
+                </form>
+
+                <p class="forgot-pass"><a href="forgot-password.cshtml">Forgot your password?</a></p>
+                <p class="signup-link">Don't have an account? <a href="#">Sign up</a></p>
+
+            </div>
+        </div>
+        <p class="copy">&copy;2019 TMI Solutions, LLC    All rights reserved.   Privacy Policy   Terms and Conditions</p>
+    </div>
+
+    @*<div id="alertModal" class="modal" style="z-index: 999999" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                </div>
+                <div class="modal-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmModal" class="modal" style="z-index: 999999" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                </div>
+                <div class="modal-body">
+                    <p></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Ok</button>
+                    <button type="button" class="btn btn-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
+    @*<script type="text/javascript">
+        var _SubmitConfirmed = false;
+        var ConfirmClick = function (message, event) {
+            var target = event.target;
+            var dfd = $.Deferred();
+            $('#confirmModal').find('.modal-footer .btn.btn-primary').on('click', function () { _SubmitConfirmed = true; $(target).trigger('click'); $('#confirmModal').modal('hide'); });
+            $('#confirmModal').find('.modal-footer .btn.btn-cancel').on('click', function () { $('#confirmModal').modal('hide'); });
+            $('#confirmModal').on('hidden.bs.modal', function () { });
+            $('#confirmModal').find('.modal-title').text('Confirm');
+            $('#confirmModal').find('.modal-body').text(message);
+            $('#confirmModal').modal('show');
+        };
+    </script>
+
+    <script type="text/javascript">
+        var _SubmitConfirmed = false;
+        var ConfirmEvent = function (message, event) {
+            $('#confirmModal').find('.modal-footer .btn.btn-primary').unbind().click(function () { event(); $('#confirmModal').modal('hide'); });
+            $('#confirmModal').find('.modal-footer .btn.btn-cancel').on('click', function () { $('#confirmModal').modal('hide'); });
+            $('#confirmModal').on('hidden.bs.modal', function () { });
+            $('#confirmModal').find('.modal-title').text('Confirm');
+            $('#confirmModal').find('.modal-body').text(message);
+            $('#confirmModal').modal('show');
+        };
+    </script>
+
+    <script type="text/javascript">
+        function SidebarModalShow(title, url, maxwidth, reloadonclose) {
+            $('#sidebarModalDialog').css("max-width", maxwidth + "px");
+            $('#sidebarLoading').show();
+            $('#sidebarModal iframe').hide();
+            $('#sidebarModal h5').text(title);
+            $('#sidebarModal').modal('show');
+            $('#sidebarModal iframe').attr("src", url);
+            if (reloadonclose) {
+                $("#btnSidebarClose").on('click', function () { SidebarModalHide(true); });
+            } else {
+                $("#btnSidebarClose").on('click', function () { SidebarModalHide(); });
+            }
+        }
+
+        function SidebarModalHide(reload) {
+            if (reload) {
+                location.reload();
+            } else {
+                $('#sidebarModal').modal('hide');
+                $('#sidebarModal iframe').attr("src", "about:blank");
+            }
+        }
+
+        function SidebarLoadingHide() {
+            $('#sidebarLoading').hide();
+            $('#sidebarModal iframe').show();
+        }
+    </script>
+
+    <div class="modal right fade" id="sidebarModal" tabindex="-1" role="dialog" aria-labelledby="sidebarModalLabel" aria-hidden="true">
+        <div id="sidebarModalDialog" class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button id="btnSidebarClose" type="button" class="close" onclick="" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div id="sidebarLoading" style="display: none; width: 36px; margin: 10px auto;"><img src="/static/images/sidebar/loading2.gif" width="36" height="36" /></div>
+                    <iframe src="about:blank" width="100%" height="100%" frameborder="0" onload="SidebarLoadingHide()"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#sidebarModal iframe').css({ 'height': ($(window).height() - 120) + 'px' });
+            $(window).resize(function () {
+                $('#sidebarModal iframe').css({ 'height': ($(window).height() - 120) + 'px' });
+            });
+        });
+    </script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.js-hamburger-link').click(function () {
+                $('.nav-items').fadeIn();
+            });
+            $('.js-nav-close').click(function () {
+                $('.nav-items').fadeOut();
+            });
+        });
+    </script>*@
+</body>
+</html>
